@@ -1,0 +1,69 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/list/list",
+			"style" : 
+			{
+				"navigationBarTitleText" : "列表",
+				"enablePullDownRefresh" : false,
+				"usingComponents": {
+					"custom-tab-bar": "/custom-tab-bar/index"
+				}
+			}
+		},
+		{
+			"path" : "pages/category/category",
+			"style" : 
+			{
+				"navigationBarTitleText" : "分类",
+				"enablePullDownRefresh" : false,
+				"usingComponents": {
+					"custom-tab-bar": "/custom-tab-bar/index"
+				}
+			}
+		},
+		{
+			"path" : "pages/user/user",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的",
+				"enablePullDownRefresh" : false,
+				"usingComponents": {
+					"custom-tab-bar": "/custom-tab-bar/index"
+				}
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+	    "custom": true,
+	    "selectedColor": "#7395DD",
+	    "borderStyle": "black",
+	    "list": [
+	      {
+	        "pagePath": "pages/list/list",
+	        "iconPath": "static/images/mlist.png",
+	        "selectedIconPath": "static/images/s_mlist.png",
+	        "text": "列表"
+	      },
+	      {
+	        "pagePath": "pages/category/category",
+	        "iconPath": "static/images/mcategory.png",
+	        "selectedIconPath": "static/images/s_mcategory.png",
+	        "text": "分类"
+	      },
+	      {
+	        "pagePath": "pages/user/user",
+	        "iconPath": "static/images/muser.png",
+	        "selectedIconPath": "static/images/s_muser.png",
+	        "text": "我的"
+	      }
+	    ]
+	  }
+}
