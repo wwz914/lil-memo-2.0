@@ -1,5 +1,6 @@
 import App from './App'
-
+import uView from "uview-ui";
+Vue.use(uView);
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
