@@ -4,10 +4,10 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path" : "pages/user/user",
+			"path" : "pages/list/list",
 			"style" : 
 			{
-				"navigationBarTitleText" : "我的",
+				"navigationBarTitleText" : "列表",
 				"enablePullDownRefresh" : false,
 				"usingComponents": {
 					"custom-tab-bar": "/custom-tab-bar/index"
@@ -15,11 +15,14 @@
 			}
 		},
 		{
-			"path" : "pages/account/account",
+			"path" : "pages/user/my/my",
 			"style" : 
 			{
 				"navigationBarTitleText" : "我的",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh" : false,
+				"usingComponents": {
+					"custom-tab-bar": "/custom-tab-bar/index"
+				}
 			}
 		},
 		{
@@ -39,17 +42,6 @@
 			}
 		},
 		{
-			"path" : "pages/list/list",
-			"style" : 
-			{
-				"navigationBarTitleText" : "列表",
-				"enablePullDownRefresh" : false,
-				"usingComponents": {
-					"custom-tab-bar": "/custom-tab-bar/index"
-				}
-			}
-		},
-		{
 			"path" : "pages/category/category",
 			"style" : 
 			{
@@ -58,6 +50,14 @@
 				"usingComponents": {
 					"custom-tab-bar": "/custom-tab-bar/index"
 				}
+			}
+		},
+		{
+			"path" : "pages/user/account/account",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
 			}
 		}
 	],
@@ -86,7 +86,7 @@
 	        "text": "分类"
 	      },
 	      {
-	        "pagePath": "pages/user/user",
+	        "pagePath": "pages/user/my/my",
 	        "iconPath": "static/images/muser.png",
 	        "selectedIconPath": "static/images/s_muser.png",
 	        "text": "我的"

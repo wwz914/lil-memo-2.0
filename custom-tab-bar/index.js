@@ -17,7 +17,7 @@ Component({
         "text": "分类"
       },
       {
-        "pagePath": "/pages/user/user",
+        "pagePath": "/pages/user/my/my",
         "iconPath": "/static/images/muser.png",
         "selectedIconPath": "/static/images/s_muser.png",
         "text": "我的"

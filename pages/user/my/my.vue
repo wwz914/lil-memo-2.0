@@ -10,7 +10,7 @@
 			<view class="item flex" @click="toAccount">
 				<view class="left flex">
 					<view class="item-icon">
-						<img src="../../static/images/muser/account.png"/>
+						<img src="../../../static/images/muser/account.png"/>
 					</view>
 					<text>账号安全</text>
 				</view>
@@ -19,7 +19,7 @@
 			<view class="item flex" @click="show = true">
 				<view class="left flex">
 					<view class="item-icon">
-						<img src="../../static/images/muser/lock.png"/>		
+						<img src="../../../static/images/muser/lock.png"/>		
 					</view>
 					<text>保险箱</text>
 				</view>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-	import {getInfo} from '../../api/user.js'
+	import {getInfo} from '../../../api/user.js'
 	export default {
 		data() {
 			return {
@@ -69,7 +69,7 @@
 			},
 			toAccount(){
 				uni.redirectTo({
-					url: '/pages/account/account'
+					url: '/pages/user/account/account'
 				})
 			},
 			toSetPwd(){
