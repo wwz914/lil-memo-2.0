@@ -13,6 +13,7 @@
 				icon="lock"
 				:clearable="false"
 				label-width="40"
+				type="password"
 				placeholder="请输入您的密码"
 			/>
 		</view>
@@ -55,6 +56,9 @@
 				      url: '/pages/register/register',
 				    })
 			}
+		},
+		onShow() {
+			uni.hideHomeButton()
 		}
 	}
 </script>

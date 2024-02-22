@@ -1,4 +1,4 @@
-import instance from '../utils/request'
+import instance from '../util/request.js'
 
 export function getLists(data){
   return instance({
@@ -51,4 +51,12 @@ export function setCate(data){
     method:'PUT',
     data
   })
+}
+
+export function setPwd(data){
+	return instance({
+		url:'/note-api/note/password',
+		method:'PUT',
+		data
+	})
 }

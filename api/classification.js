@@ -1,4 +1,4 @@
-import instance from '../utils/request'
+import instance from '../util/request'
 
 export function getCate(data){
   return instance({
