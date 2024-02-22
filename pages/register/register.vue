@@ -28,12 +28,13 @@
 			/>
 		</view>
 		<view class="w100">
-			<u-button shape="circle" :hair-line="false":custom-style="btn">注册</u-button>
+			<u-button shape="circle" :hair-line="false":custom-style="btn" @click="toReg">注册</u-button>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {register,login} from '../../api/user.js'
 	export default {
 		data() {
 			return {
@@ -47,6 +48,27 @@
 					border:'none'
 				}
 			};
+		},
+		methods:{
+			toReg(){
+				console.log(123123);
+				register(this.regForm).then(res=>{
+					console.log(res);
+					if(res.code==200){
+						login(this.regForm).then(res=>{
+						  console.log(res);
+						  uni.setStorageSync('token', res.data)
+						  uni.switchTab({
+							url: '/pages/list/list',
+						  })
+						}).catch(err=>{
+						  console.log(err);
+						})
+					}
+				}).catch(err=>{
+					console.log(err);
+				})
+			}
 		}
 	}
 </script>
