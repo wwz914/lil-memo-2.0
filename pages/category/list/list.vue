@@ -2,7 +2,7 @@
 	<scroll-view class="list-container">
 		<view class="container">
 			<view class="search w100 flex">
-				<image style="width: 40rpx;height: 40rpx;;" src="../../static/images/mlist/search.png" @click="show=true" mode="scaleToFill"></image>
+				<image style="width: 40rpx;height: 40rpx;;" src="../../../static/images/mlist/search.png" @click="show=true" mode="scaleToFill"></image>
 				<u-input class="right" placeholder="搜索..."></u-input>
 			</view>
 			<view class="noteLists">
@@ -17,10 +17,10 @@
 			  </view>
 			  <view class="floatWindows">
 				<view class="floatWindow" @click="refresh">
-				  <image src="../../static/images/mlist/refresh.png" mode="scaleToFill"/>
+				  <image src="../../../static/images/mlist/refresh.png" mode="scaleToFill"/>
 				</view>
 				<view class="floatWindow" @click="addnote">
-				  <image src="../../static/images/mlist/new.png" mode="scaleToFill"/>
+				  <image src="../../../static/images/mlist/new.png" mode="scaleToFill"/>
 				</view>
 			  </view>
 			<u-popup v-model="show">
@@ -35,8 +35,8 @@
 </template>
 
 <script>
-	import {card} from '../../components/card/card.vue'
-	import {getLists} from '../../api/list.js'
+	import {card} from '../../../components/card/card.vue'
+	import {getLists} from '../../../api/list.js'
 	export default {
 		data() {
 			return {

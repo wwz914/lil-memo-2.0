@@ -4,6 +4,17 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/category/category/category",
+			"style" : 
+			{
+				"navigationBarTitleText" : "分类",
+				"enablePullDownRefresh" : false,
+				"usingComponents": {
+					"custom-tab-bar": "/custom-tab-bar/index"
+				}
+			}
+		},
+		{
 			"path" : "pages/list/list",
 			"style" : 
 			{
@@ -50,18 +61,15 @@
 			}
 		},
 		{
-			"path" : "pages/category/category",
+			"path" : "pages/user/account/account",
 			"style" : 
 			{
-				"navigationBarTitleText" : "分类",
-				"enablePullDownRefresh" : false,
-				"usingComponents": {
-					"custom-tab-bar": "/custom-tab-bar/index"
-				}
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
 			}
 		},
 		{
-			"path" : "pages/user/account/account",
+			"path" : "pages/category/list/list",
 			"style" : 
 			{
 				"navigationBarTitleText" : "",
@@ -88,7 +96,7 @@
 	        "text": "列表"
 	      },
 	      {
-	        "pagePath": "pages/category/category",
+	        "pagePath": "pages/category/category/category",
 	        "iconPath": "static/images/mcategory.png",
 	        "selectedIconPath": "static/images/s_mcategory.png",
 	        "text": "分类"

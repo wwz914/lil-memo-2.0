@@ -11,7 +11,7 @@ Component({
         "text": "列表"
       },
       {
-        "pagePath": "/pages/category/category",
+        "pagePath": "/pages/category/category/category",
         "iconPath": "/static/images/mcategory.png",
         "selectedIconPath": "/static/images/s_mcategory.png",
         "text": "分类"

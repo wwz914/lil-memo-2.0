@@ -21,9 +21,6 @@
 				
 			};
 		},
-		created() {
-			console.log(this.noteData);
-		}
 	}
 </script>
 
