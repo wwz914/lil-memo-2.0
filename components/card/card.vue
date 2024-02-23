@@ -4,8 +4,10 @@
 			<view class="title">{{noteData.noteTitle}}</view>
 			<view class="time">{{noteData.createTime}}</view>
 		</view>
-		<view class="right">
-			<view class="ops">-</view>
+		<view class="right flex">
+			<view class="lock" v-show="true"><u-icon name="lock"/></view>
+			<view class="top" v-show="true"><u-icon name="bookmark"/></view>
+			<image class="opImg" src="../../static/images/mlist/op.png" mode="scaleToFill"></image>
 		</view>
 	</view>
 </template>
@@ -20,7 +22,7 @@
 			};
 		},
 		created() {
-			console.log(this.userData);
+			console.log(this.noteData);
 		}
 	}
 </script>
@@ -38,6 +40,22 @@
 	.time{
 		font-size: 10px;
 		color: #D1D1D1;
+	}
+	.right{
+		gap: 22rpx;
+		align-items: center;
+		justify-content: flex-end;
+		min-width: 30rpx;
+		height: 30rpx;
+		font-size: 15px;
+		color: #D9D9D9;
+		.opImg{
+			width: 6rpx;
+			height: 30rpx;
+			margin-left: 4rpx;
+		}
+		.lock{
+		}
 	}
 }
 </style>

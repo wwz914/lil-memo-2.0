@@ -98,7 +98,7 @@
 <style lang="scss">
 	.container{
 		height: 100vh;
-		
+		text-align: center;
 		background-color: #F8F8F8;
 		.info-part{
 			background-color: #648CEB;

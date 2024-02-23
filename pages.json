@@ -15,6 +15,14 @@
 			}
 		},
 		{
+			"path" : "pages/edit/edit",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
 			"path" : "pages/user/my/my",
 			"style" : 
 			{
