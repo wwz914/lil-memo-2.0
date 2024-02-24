@@ -6,7 +6,7 @@
 				<u-input class="right" placeholder="搜索..."></u-input>
 			</view>
 			<view class="noteLists">
-				<card :note-data="i" v-for="i in note" :key="i.noteId"></card>
+				<card :note-data="i" v-for="i in note" :key="i.noteId" @op-click="opHandler" @note-click="noteHandler"></card>
 			</view>
 			<view class="tip w100" v-if="tip">
 				<view class="content">
@@ -29,6 +29,16 @@
 					<div class="item">回收站</div>
 				</view>
 			</u-popup>
+			<u-popup v-model="opShow" mode="bottom" border-radius="20">
+				<view class="op-items">
+					<view class="item flex">置顶</view>
+					<view class="item flex">删除</view>
+					<view class="item flex">加密</view>
+					<view class="item flex">分类</view>
+					<view class="item flex">复制</view>
+					<view class="item flex cancel">取消</view>
+				</view>
+			</u-popup>
 		</view>
 		<custom-tab-bar v-show="0" ref="customTabBar" />
 	</scroll-view>
@@ -42,6 +52,7 @@
 			return {
 				tip:true,
 				show:false,
+				opShow:false,
 				note:[],
 				queryForm:{
 				  pageNum:1,
@@ -61,6 +72,15 @@
 				uni.setStorageSync('editId', )
 				uni.navigateTo({
 					url: '/pages/edit/edit',
+				})
+			},
+			opHandler(data){
+				this.opShow=true
+			},
+			noteHandler(data){
+				uni.setStorageSync('editId',data)
+				uni.navigateTo({
+					url:'/pages/edit/edit'
 				})
 			}
 		},
@@ -129,6 +149,22 @@
 				border-top:1px solid #7DA3F8;
 				border-bottom:1px solid #7DA3F8;
 				margin-bottom: -1px;
+			}
+		}
+		.op-items{
+			overflow: hidden;
+			font-size: 16px;
+			font-weight: 400;
+			background-color: #F7F7F7;
+			.item{
+				height: 106rpx;
+				align-items: center;
+				justify-content: center;
+				background-color: #fff;
+				border-bottom: 1px solid #E5E5E5;
+			}
+			.cancel{
+				margin-top: 16rpx;
 			}
 		}
 	}

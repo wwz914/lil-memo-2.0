@@ -1,10 +1,10 @@
 <template>
 	<view class="card-container flex">
-		<view class="left">
+		<view class="left" @click="noteClick">
 			<view class="title">{{noteData.noteTitle}}</view>
 			<view class="time">{{noteData.createTime}}</view>
 		</view>
-		<view class="right flex">
+		<view class="right flex" @click="opClick">
 			<view class="lock" v-show="true"><u-icon name="lock"/></view>
 			<view class="top" v-show="true"><u-icon name="bookmark"/></view>
 			<image class="opImg" src="../../static/images/mlist/op.png" mode="scaleToFill"></image>
@@ -21,6 +21,17 @@
 				
 			};
 		},
+		methods:{
+			opClick(){
+				this.$emit('op-click',this.noteData.noteId)
+			},
+			noteClick(){
+				this.$emit('note-click',this.noteData.noteId)
+			}
+		},
+		created() {
+			// console.log(this.noteData.noteId);
+		}
 	}
 </script>
 
@@ -34,9 +45,12 @@
 	font-size: 14px;
 	padding: 0 20rpx 0 40rpx;
 	margin-bottom: 16rpx;
-	.time{
-		font-size: 10px;
-		color: #D1D1D1;
+	.left{
+		flex: 1;
+		.time{
+			font-size: 10px;
+			color: #D1D1D1;
+		}
 	}
 	.right{
 		gap: 22rpx;

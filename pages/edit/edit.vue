@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import {addNewNote} from '../../api/list.js'
+	import {addNewNote,note} from '../../api/list.js'
 	export default {
 		data() {
 			return {
@@ -44,6 +44,14 @@
 			      })
 			    }
 			  },
+		},
+		created() {
+			let noteId=uni.getStorageSync('editId')
+			if(noteId){
+				note(noteId).then(res=>{
+					this.noteForm=res.data
+				})
+			}
 		}
 	}
 </script>
