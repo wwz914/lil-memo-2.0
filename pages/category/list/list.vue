@@ -47,6 +47,7 @@
 				  pageNum:1,
 				  pageSize:100,
 				  recycleBin:0,
+				  classifyId:undefined
 				},
 			};
 		},
@@ -65,16 +66,14 @@
 			}
 		},
 		onShow() {
-		  this.$nextTick(() => {
-			this.$refs.customTabBar.getTabBar().setData({
-			  selected: 0
-			})
-		  })
 		  getLists(this.queryForm).then(res=>{
 			  this.note=res.rows
 		  }).catch(err=>{
 			  console.log(err);
 		  })
+		},
+		onLoad(option){
+			this.queryForm.classifyId=option.classifyId
 		}
 	}
 </script>

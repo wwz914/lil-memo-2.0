@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="cateList w100">
-			<view class="cate flex" v-for="i in cate">
+			<view class="cate flex" v-for="i in cate" @click="toList(i.classifyId)">
 				<view class="left flex">
 					<image src="../../../static/images/mcate/file.png" mode="scaleToFill"></image>
 					<text>{{i.classifyName}}</text>
@@ -31,6 +31,13 @@
 				},
 				cate:[]
 			};
+		},
+		methods:{
+			toList(id){
+				uni.navigateTo({
+					url:`/pages/category/list/list?classifyId=${id}`
+				})
+			}
 		},
 		onShow() {
 		  this.$nextTick(() => {
