@@ -31,12 +31,12 @@
 			</u-popup>
 			<u-popup v-model="opShow" mode="bottom" border-radius="20">
 				<view class="op-items">
-					<view class="item flex">置顶</view>
-					<view class="item flex">删除</view>
+					<view class="item flex" @click="setTop">置顶</view>
+					<view class="item flex" @click="remove">删除</view>
 					<view class="item flex">加密</view>
 					<view class="item flex">分类</view>
 					<view class="item flex">复制</view>
-					<view class="item flex cancel">取消</view>
+					<view class="item flex cancel" @click="cancel">取消</view>
 				</view>
 			</u-popup>
 		</view>
@@ -46,7 +46,7 @@
 
 <script>
 	import {card} from '../../components/card/card.vue'
-	import {getLists} from '../../api/list.js'
+	import {getLists,toTopAction,removeNote} from '../../api/list.js'
 	export default {
 		data() {
 			return {
@@ -76,11 +76,38 @@
 			},
 			opHandler(data){
 				this.opShow=true
+				uni.setStorageSync('opId',data)
 			},
 			noteHandler(data){
 				uni.setStorageSync('editId',data)
 				uni.navigateTo({
 					url:'/pages/edit/edit'
+				})
+			},
+			setTop(){
+				let noteId=uni.getStorageSync('opId')
+				toTopAction(noteId).then(res=>{
+					console.log(res);
+					if(res.code==200){
+						getLists(this.queryForm).then(res=>{
+							this.note=res.rows
+						})
+					}
+					this.opShow=false
+				}).catch(err=>{
+					console.log(err);
+				})
+			},
+			cancel(){
+				this.opShow=false
+			},
+			remove(){
+				let noteId=uni.getStorageSync('opId')
+				removeNote(noteId).then(res=>{
+					console.log(res);
+					this.opShow=false
+				}).catch(err=>{
+					console.log(err);
 				})
 			}
 		},

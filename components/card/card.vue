@@ -6,7 +6,7 @@
 		</view>
 		<view class="right flex" @click="opClick">
 			<view class="lock" v-show="true"><u-icon name="lock"/></view>
-			<view class="top" v-show="true"><u-icon name="bookmark"/></view>
+			<view class="top" v-show="noteData.top==1"><u-icon name="bookmark"/></view>
 			<image class="opImg" src="../../static/images/mlist/op.png" mode="scaleToFill"></image>
 		</view>
 	</view>
