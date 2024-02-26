@@ -15,14 +15,14 @@
 			<view class="left">
 				<input type="text" placeholder="请输入新分类名称" v-model="cateForm.classifyName"/>
 			</view>
-			<view class="right">新增</view>
+			<view class="right" @click="addCate">新增</view>
 		</view>
 		<custom-tab-bar v-show="0" ref="customTabBar" />
 	</view>
 </template>
 
 <script>
-	import {getCate} from '../../../api/classification.js'
+	import {getCate,add} from '../../../api/classification.js'
 	export default {
 		data() {
 			return {
@@ -36,6 +36,17 @@
 			toList(id){
 				uni.navigateTo({
 					url:`/pages/category/list/list?classifyId=${id}`
+				})
+			},
+			addCate(){
+				add(this.cateForm).then(res=>{
+					console.log(res);
+					if(res.code==200){
+						this.cateForm.classifyName='';
+						getCate().then(res=>{
+							this.cate=res.data
+						})
+					}
 				})
 			}
 		},
@@ -66,7 +77,6 @@
 				image{
 					width: 40rpx;
 					height: 40rpx;
-					// margin-bottom: -10rpx;
 				}
 			}
 			.right{
