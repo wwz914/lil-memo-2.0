@@ -35,7 +35,7 @@
 					<view class="item flex" @click="remove">删除</view>
 					<view class="item flex">加密</view>
 					<view class="item flex">分类</view>
-					<view class="item flex">复制</view>
+					<view class="item flex" @click="copy">复制</view>
 					<view class="item flex cancel" @click="cancel">取消</view>
 				</view>
 			</u-popup>
@@ -109,6 +109,13 @@
 				}).catch(err=>{
 					console.log(err);
 				})
+			},
+			copy(){
+				uni.showToast({
+					title: '已复制',
+					duration: 1000
+				});
+				this.opShow=false
 			}
 		},
 		onShow() {
