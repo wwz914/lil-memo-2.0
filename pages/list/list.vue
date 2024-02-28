@@ -25,8 +25,8 @@
 			  </view>
 			<u-popup v-model="show">
 				<view class="w100 items">
-					<div class="item">全部</div>
-					<div class="item">回收站</div>
+					<div class="item" @click="all">全部</div>
+					<div class="item" @click="huishouzhan">回收站</div>
 				</view>
 			</u-popup>
 			<u-popup v-model="opShow" mode="bottom" border-radius="20">
@@ -64,9 +64,7 @@
 		components:{card},
 		methods:{
 			refresh(){
-				getLists(this.queryForm).then(res=>{
-					this.note=res.rows
-				})
+				this.getNoteList()
 			},
 			addnote(){
 				uni.setStorageSync('editId', )
@@ -89,9 +87,7 @@
 				toTopAction(noteId).then(res=>{
 					console.log(res);
 					if(res.code==200){
-						getLists(this.queryForm).then(res=>{
-							this.note=res.rows
-						})
+						this.getNoteList()
 					}
 					this.opShow=false
 				}).catch(err=>{
@@ -116,6 +112,23 @@
 					duration: 1000
 				});
 				this.opShow=false
+			},
+			getNoteList(){
+				getLists(this.queryForm).then(res=>{
+					this.note=res.rows
+				}).catch(err=>{
+					console.log(err);
+				})
+			},
+			huishouzhan(){
+				this.queryForm.recycleBin=1
+				this.show=false
+				this.getNoteList()
+			},
+			all(){
+				this.queryForm.recycleBin=0
+				this.show=false
+				this.getNoteList()
 			}
 		},
 		onShow() {
@@ -124,11 +137,7 @@
 			  selected: 0
 			})
 		  })
-		  getLists(this.queryForm).then(res=>{
-			  this.note=res.rows
-		  }).catch(err=>{
-			  console.log(err);
-		  })
+		  this.getNoteList()
 		}
 	}
 </script>
