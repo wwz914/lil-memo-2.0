@@ -137,6 +137,8 @@
 			  selected: 0
 			})
 		  })
+		  uni.setStorageSync('opId',)
+		  uni.setStorageSync('editId',)
 		  this.getNoteList()
 		}
 	}

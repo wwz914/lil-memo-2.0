@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import {addNewNote,note} from '../../api/list.js'
+	import {addNewNote,note,setCate,getLists} from '../../api/list.js'
 	export default {
 		data() {
 			return {
@@ -17,6 +17,15 @@
 				      noteId:undefined,
 				      noteTitle:'',
 				      noteContent:''
+				},
+				setCateForm:{
+					classifyId:undefined,
+					noteId:undefined
+				},
+				queryForm:{
+				  pageNum:1,
+				  pageSize:100,
+				  recycleBin:0,
 				},
 			};
 		},
@@ -26,7 +35,6 @@
 			    if(noteId){
 			      this.noteForm.noteId=noteId
 			      edit(this.noteForm).then(res=>{
-			        console.log(res);
 			        if(res.code==200){
 			          uni.switchTab({
 			            url: '/pages/list/list',
@@ -35,15 +43,31 @@
 			      })
 			    }else{
 			      addNewNote(this.noteForm).then(res=>{
-			        console.log(res);
 			        if(res.code==200){
-			          uni.switchTab({
-			            url: '/pages/list/list',
-			          })
+						if(this.setCateForm.classifyId){
+							getLists(this.queryForm).then(res=>{
+								this.setCateForm.noteId=res.rows.find(e=>e.noteTitle==this.noteForm.noteTitle).noteId*1
+								setCate(this.setCateForm).then(res=>{
+									if(res.code==200){
+										uni.redirectTo({
+											url:`/pages/category/list/list?classifyId=${this.setCateForm.classifyId}`
+										})
+										this.setCateForm={}
+									}
+								})
+							})
+						}else{
+						    uni.switchTab({
+							    url: '/pages/list/list',
+						    })
+						}
 			        }
 			      })
 			    }
 			  },
+		},
+		onLoad(option) {
+			this.setCateForm.classifyId=option.classifyId?option.classifyId*1:undefined
 		},
 		created() {
 			let noteId=uni.getStorageSync('editId')

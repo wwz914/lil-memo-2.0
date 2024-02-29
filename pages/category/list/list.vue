@@ -61,19 +61,24 @@
 			addnote(){
 				uni.setStorageSync('editId', )
 				uni.navigateTo({
-					url: '/pages/edit/edit',
+					url: `/pages/edit/edit?classifyId=${this.queryForm.classifyId}`,
 				})
+			},
+			getList(){
+			  getLists(this.queryForm).then(res=>{
+				  console.log(res);
+				  this.note=res.rows
+			  }).catch(err=>{
+				  console.log(err);
+			  })
 			}
 		},
 		onShow() {
-		  getLists(this.queryForm).then(res=>{
-			  this.note=res.rows
-		  }).catch(err=>{
-			  console.log(err);
-		  })
+			this.getList()
 		},
 		onLoad(option){
 			this.queryForm.classifyId=option.classifyId
+			this.getList()
 		}
 	}
 </script>
