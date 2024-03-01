@@ -34,11 +34,12 @@
 					<view class="item flex" @click="setTop">置顶</view>
 					<view class="item flex" @click="remove">删除</view>
 					<view class="item flex">加密</view>
-					<view class="item flex">分类</view>
+					<view class="item flex" @click="setCate">分类</view>
 					<view class="item flex" @click="copy">复制</view>
 					<view class="item flex cancel" @click="cancel">取消</view>
 				</view>
 			</u-popup>
+			<u-select v-model="cateShow" :list="cateList" @confirm="confirmCate"></u-select>
 		</view>
 		<custom-tab-bar v-show="0" ref="customTabBar" />
 	</scroll-view>
@@ -46,19 +47,23 @@
 
 <script>
 	import {card} from '../../components/card/card.vue'
-	import {getLists,toTopAction,removeNote} from '../../api/list.js'
+	import {getCate} from '../../api/classification.js'
+	import {getLists,toTopAction,removeNote,setCate} from '../../api/list.js'
 	export default {
 		data() {
 			return {
 				tip:true,
 				show:false,
 				opShow:false,
+				cateShow:false,
 				note:[],
+				cateList:[],
 				queryForm:{
 				  pageNum:1,
 				  pageSize:100,
 				  recycleBin:0,
 				},
+				setCateForm:{},
 			};
 		},
 		components:{card},
@@ -129,6 +134,34 @@
 				this.queryForm.recycleBin=0
 				this.show=false
 				this.getNoteList()
+			},
+			getCateList(){
+				getCate().then(res=>{
+					this.cateList=res.data.map(e=>({
+						label:e.classifyName,
+						value:e.classifyId
+					}))
+				})
+			},
+			confirmCate(e){
+				console.log(e);
+				this.setCateForm.classifyId=e[0].value
+				setCate(this.setCateForm).then(res=>{
+					console.log(res);
+					if(res.code==200){
+						uni.showToast({
+							title:res.msg,
+							duration: 1000
+						})
+					}
+					this.opShow=false
+					this.cateShow=false
+				})
+			},
+			setCate(){
+				let noteId=uni.getStorageSync('opId')
+				this.setCateForm.noteId=noteId
+				this.cateShow=true
 			}
 		},
 		onShow() {
@@ -140,13 +173,14 @@
 		  uni.setStorageSync('opId',)
 		  uni.setStorageSync('editId',)
 		  this.getNoteList()
+		  this.getCateList()
 		}
 	}
 </script>
 
 <style lang="scss">
 	.list-container{
-		height: 100vh;
+		// height: 100vh;
 		background-color: #f8f8f8;
 		.search{
 			gap: 26rpx;
