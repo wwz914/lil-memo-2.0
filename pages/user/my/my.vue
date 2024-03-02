@@ -68,7 +68,7 @@
 				  }
 			},
 			toAccount(){
-				uni.redirectTo({
+				uni.navigateTo({
 					url: '/pages/user/account/account'
 				})
 			},

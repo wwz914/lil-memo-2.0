@@ -90,6 +90,7 @@
 		padding-bottom: 16rpx;
 	}
 	textarea{
+	  flex: 1;
 	  font-size: 14px;
 	  height: 100%;
 	  color: #333333;

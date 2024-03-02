@@ -162,6 +162,9 @@
 				let noteId=uni.getStorageSync('opId')
 				this.setCateForm.noteId=noteId
 				this.cateShow=true
+			},
+			closeTip(){
+				this.tip=false
 			}
 		},
 		onShow() {
