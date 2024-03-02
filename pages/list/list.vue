@@ -180,8 +180,10 @@
 
 <style lang="scss">
 	.list-container{
-		// height: 100vh;
 		background-color: #f8f8f8;
+		.container{
+			padding-bottom: 96rpx;
+		}
 		.search{
 			gap: 26rpx;
 			height: 92rpx;
@@ -207,7 +209,8 @@
 			}
 		}
 		.floatWindows{
-		  position: absolute;
+		  position: fixed;
+		  z-index: 2;
 		  right: 2%;
 		  bottom: 12%;
 		  image{

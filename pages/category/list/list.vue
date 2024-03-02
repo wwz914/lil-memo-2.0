@@ -112,7 +112,8 @@
 			}
 		}
 		.floatWindows{
-		  position: absolute;
+		  position: fixed;
+		  z-index: 2;
 		  right: 2%;
 		  bottom: 12%;
 		  image{
