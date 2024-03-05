@@ -81,7 +81,8 @@
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "备忘录",
 		"navigationBarBackgroundColor": "#648CEB",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"scrollIndicator": "none"
 	},
 	"uniIdRouter": {},
 	"tabBar": {
